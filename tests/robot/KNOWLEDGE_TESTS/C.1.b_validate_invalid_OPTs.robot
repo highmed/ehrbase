@@ -39,10 +39,10 @@ Documentation   OPT1.4 integration tests
 Resource    ${CURDIR}${/}../_resources/suite_settings.robot
 Resource    ${CURDIR}${/}../_resources/keywords/template_opt1.4_keywords.robot
 
-Suite Setup  startup OPT SUT
-Suite Teardown  shutdown SUT
+# Suite Setup  startup OPT SUT
+Suite Teardown  Delete All Templates
 
-Force Tags   OPT14
+Force Tags   OPT14    future
 
 
 
@@ -55,8 +55,6 @@ Empty File
     empty_file/empty_file.opt
     empty_file/empty_xml.opt
     empty_file/empty_xml_template.opt
-
-    [Teardown]  TRACE JIRA BUG    EHR-331    not-ready
 
 
 Empty Template ID

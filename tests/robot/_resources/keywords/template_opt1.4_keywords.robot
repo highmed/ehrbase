@@ -31,18 +31,6 @@ ${INVALID DATA SETS}   ${PROJECT_ROOT}${/}tests${/}robot${/}_resources${/}test_d
 
 
 *** Keywords ***
-startup OPT SUT
-    [Documentation]     Test-Suite Setup for ADL 1.4 OPT tests
-    ...                 This keyword overrides the one with same name from
-    ...                 "generic_keywords.robot" file
-
-                        get application version
-			                  unzip file_repo_content.zip
-                        empty operational_templates folder
-                        start ehrdb
-                        start openehr server
-
-
 get valid OPT file
     [Arguments]         ${opt file}
     [Documentation]     Gets an OPT file from test_data_sets/valid_templates folder
@@ -169,9 +157,7 @@ verify content of OPT
                         Log Element    ${actual}
                         Log Element    ${expected}
 
-        TRACE JIRA BUG    EHR-336    not-ready
-
-                        Elements Should Match    ${actual}    ${expected}
+                        Elements Should Be Equal    ${actual}    ${expected}
                         ...                      normalize_whitespace=True
 
 

@@ -33,7 +33,7 @@ Resource    ${CURDIR}${/}../_resources/keywords/template_opt1.4_keywords.robot
 # Test Setup  start openehr server
 # Test Teardown  restore clean SUT state
 
-Force Tags      AQL
+Force Tags      AQL    obsolete
 
 
 
@@ -43,7 +43,6 @@ Establish Preconditions: load valid OPTs into SUT
 
     minimal/minimal_action.opt
     minimal/minimal_observation.opt
-    minimal/minimal_evaluation.opt
     minimal/minimal_evaluation.opt
     minimal/minimal_admin.opt
     minimal/minimal_instruction.opt
@@ -205,7 +204,7 @@ AQL for committed data OBSERVATION WHERE =
 
     create EHR XML
     commit composition (XML)    minimal_observation.en.v1.instance_xml_input_1.xml
-    execute AQL query           {"aql": "SELECT c/uid/value, c/archetype_node_id, c/archetype_details/template_id/value, o/data[at0001]/origin/value as origin_value, o/data[at0001]/events[at0002]/time/value, o/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value/value FROM EHR e [ehr_id/value='${ehr_id}'] CONTAINS COMPOSITION c [openEHR-EHR-COMPOSITION.minimal.v1] CONTAINS OBSERVATION o [openEHR-EHR-OBSERVATION.minimal.v1] WHERE o/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value/value = 'text 67'"}
+    execute AQL query           {"aql": "SELECT c/uid/value, c/archetype_node_id, c/archetype_details/template_id/value, o/data[at0001]/origin/value as origin_value, o/data[at0001]/events[at0002]/time/value, o/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value/value FROM EHR e [ehr_id/value='${ehr_id}'] CONTAINS COMPOSITION c [openEHR-EHR-COMPOSITION.minimal.v1] CONTAINS OBSERVATION o [openEHR-EHR-OBSERVATION.minimal.v1] WHERE o/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value/value = 'first value'"}
 
     # verify query result
     Output   response body
